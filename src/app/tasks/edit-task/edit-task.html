@@ -1,0 +1,17 @@
+<div class="edit-container">
+    <div class="edit-header ">
+        <div class="edit-actions">
+            <button type="button" class="btn btn-primary btn-sm" (click)="onSave(titleField.value)">
+                <i class="mr-quarter fa fa-save"> </i> SAVE
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" (click)="onClose()">
+                <i class="mr-quarter fa fa-close"></i> CLOSE
+            </button>
+        </div>
+    </div>
+
+    <div class="edit-body">
+        <label class="label" for="titleField">Description</label>
+        <textarea id="titleField" #titleField [value]="title()" rows="5"></textarea>
+    </div>
+</div>

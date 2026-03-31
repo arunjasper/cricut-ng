@@ -1,5 +1,5 @@
 {
-  "name": "cricut-ng-assessment",
+  "name": "cricut-ng",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -23,12 +23,14 @@
   "private": true,
   "packageManager": "npm@11.6.2",
   "dependencies": {
+    "@angular-architects/ngrx-toolkit": "^21.0.1",
     "@angular/common": "^21.0.0",
     "@angular/compiler": "^21.0.0",
     "@angular/core": "^21.0.0",
     "@angular/forms": "^21.0.0",
     "@angular/platform-browser": "^21.0.0",
     "@angular/router": "^21.0.0",
+    "@ngrx/signals": "^21.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

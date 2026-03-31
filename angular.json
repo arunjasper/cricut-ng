@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "cricut-ng-assessment": {
+    "cricut-ng": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "cricut-ng-assessment:build:production"
+              "buildTarget": "cricut-ng:build:production"
             },
             "development": {
-              "buildTarget": "cricut-ng-assessment:build:development"
+              "buildTarget": "cricut-ng:build:development"
             }
           },
           "defaultConfiguration": "development"

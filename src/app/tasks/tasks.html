@@ -1,0 +1,97 @@
+<main class="main-container bg-white">
+    <h2 class="task-title align-center">Tasks</h2>
+    <div class="filter-container">
+        <div class="filter-header" aria-hidden="true">
+            <span>FILTERS</span>
+            <button class="close-filters" (click)="toggleFilter()">
+                <i id="closeFilters" class="fa" [class]="filterOpen()? 'fa-close' : 'fa-angle-double-down'"
+                    alt="Close the filters"> </i>
+            </button>
+        </div>
+        <div class="filter-body" [class]="filterOpen()? 'show':'hide '">
+            <form [formGroup]="form" (ngSubmit)="onFilter()">
+                @if ( form.hasError('startBeforeEnd')){
+                <div class="error-message">End date must be after the start date.</div>
+                }
+                <label for="creation-date" class="label">Creation Date</label>
+                <div class="input-grid">
+                    <div class="date-group">
+                        <input type="date" id="startDate" formControlName="startDate" placeholder="mm/dd/yyyy"
+                            class="input-field">
+                        <span class="date-separator">—</span>
+                        <input type="date" id="endDate" formControlName="endDate" placeholder="mm/dd/yyyy"
+                            class="input-field">
+                        <div class="btn-group">
+                            <button type="submit" [disabled]="form.invalid"
+                                class="btn btn-lg btn-primary">APPLY</button>
+                            <button type="reset" class="btn btn-lg btn-secondary" (click)="onReset()">RESET</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end"> <a href="#" (click)="onAdd()" class="cursor-pointer">Add New Task</a>
+    </div>
+    <div>
+        <table class="table mt-1" aria-label="Task list">
+            <thead>
+                <tr>
+                    <th class="icon-column">
+                    </th>
+                    <th class="icon-column">
+                    </th>
+                    <th>
+                        <i (sortChange)="onSortChange($event)" appSortable appSortableKey="title"
+                            [currentSortKey]="currentSortKey()" [sortDirection]="sortDirection()" class="fa strong">Name</i>
+                    </th>
+                    <th class="date-column">
+                        <i class="fa strong" appSortable appSortableKey="creationDate" [currentSortKey]="currentSortKey()"
+                            [sortDirection]="sortDirection()" (sortChange)="onSortChange($event)">Creation Date</i>
+                    </th>
+                    <th class="icon-column"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (task of filteredTaskList(); track task.id) {
+                <tr [class.completed]="task.completed">
+                    <td class="cb-column">
+                        <input type="checkbox" [checked]="task.completed" (change)="onToggleStatus(task)"
+                            aria-label="Mark as completed" />
+                    </td>
+                    <td class="icon-column">
+                        <button (click)="onEdit(task)">
+                            <i class="fa fa-edit blue"></i>
+                        </button>
+                    </td>
+                    <td class="title">{{ task.title }}</td>
+                    <td class="task-date">{{ task.creationDate | date: 'MM/dd/yyyy' }}</td>
+                    <td class="icon-column">
+                        <button (click)="onDelete(task)">
+                            <i class="fa fa-trash-o red ml-1"></i>
+                        </button>
+                    </td>
+                </tr>
+                }@empty {
+                <tr>
+                    <td colspan="4" class="info">No tasks found for the selected date range.</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>
+<div>
+    <app-drawer [open]="isDrawerOpen()" (closeEvent)="onClose()">
+        @if(isDrawerOpen()) {
+        @if(selectedTask()) {
+        <app-edit-task [selectedTask]="selectedTask()!" (closeEvent)="onClose()" />
+        }
+        @else {
+        <app-add-task  (closeEvent)="onClose()" />
+        }
+        }
+    </app-drawer>
+</div>
+<app-confirm (confirm)="onConfirm()" (cancelEvent)="toggleModal(false)" [isVisible]="openModal()" title="Confirm"
+    [message]="confirmMessage()" />

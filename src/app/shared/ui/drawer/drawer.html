@@ -1,0 +1,6 @@
+@if (open()) {
+<div class="backdrop" (click)="closeNav()" (keydown.escape)="closeNav()" tabindex="0" role="button"></div>
+}
+<div id="drawer" class="drawer right" aria-hidden="true" [ngClass]="open() ? 'expand' : ''">
+    <ng-content></ng-content>
+</div>

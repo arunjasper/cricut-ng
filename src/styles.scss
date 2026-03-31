@@ -1,1 +1,272 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'include/root';
+@use 'include/reset';
+
+.wrapper {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 900;
+}
+
+/*--------Button-------------*/
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-weight: var(--font-weight-thin);
+    border-radius: 50px;
+    cursor: pointer;
+    color: #ffffff;
+
+    &-primary {
+        background-color: var(--primary-color);
+    }
+
+    &-secondary {
+        background-color: var(--secondary-color);
+    }
+
+    &-lg {
+        padding: 8px 24px;
+        font-size: var(--font-lg);
+    }
+
+    &-sm {
+        padding: 5px 14px;
+        font-size: var(--font-normal);
+    }
+
+    &:focus {
+        outline: 2px solid #e8eaf6;
+    }
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+    &:hover {
+        filter: brightness(1.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        filter: grayscale(1);
+    }
+
+}
+
+.button-link {
+    background-color: #007bff;
+    /* Button background color */
+    color: white;
+    /* Text color */
+    padding: 10px 20px;
+    /* Space around the text */
+    text-decoration: none;
+    /* Remove the default underline */
+    border-radius: 5px;
+    /* Rounded corners */
+    display: inline-block;
+    /* Allows for padding and margins, and keeps it inline with text flow */
+    cursor: pointer;
+    /* Changes the mouse cursor to a pointer (hand) on hover */
+    border: none;
+    /* Removes the default button border if applied to a <button> */
+    font-family: inherit;
+    /* Ensures the font is inherited from the body/parent */
+}
+
+
+/*---------Sorting-------------*/
+
+.sortable {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sortable.sorted-asc::after {
+    content: " \f107";
+    color: grey;
+}
+
+.sortable.sorted-desc::after {
+    content: " \f106";
+    color: grey;
+}
+
+/*-----------table styles ----------*/
+.table {
+    table-layout: fixed;
+
+    th {
+        text-align: left;
+        padding: 4px 0;
+        color: var(--color-text);
+        font-weight: var(--font-weight-normal);
+        border-top: 1px solid var(--border-color);
+        font-size: 0.95rem;
+    }
+
+    td {
+        color: var(--color-text);
+        vertical-align: middle;
+        padding: 2px 0;
+        font-weight: var(--font-weight-normal);
+        ;
+    }
+
+    tbody tr {
+        border-top: 1px solid var(--border-color);
+    }
+}
+
+/*-----------------Input fields -----------------*/
+
+.input-field {
+    height: 30px;
+    padding: 4px 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    ;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    background-color: var(--bg-white);
+    transition: all 0.2s ease-in-out;
+    outline: none;
+
+    &.input-error {
+        border-color: var(--color-red);
+    }
+
+    &:hover:not(.input-error) {
+        border-color: #bdbdbd;
+    }
+
+    &:focus {
+        border-color: #e0d9d9;
+        box-shadow: 0 0 0 2px rgba(123, 31, 162, 0.1);
+    }
+
+    &::placeholder {
+        color: var(--color-placeholder);
+        opacity: 1;
+    }
+}
+
+.form-error {
+    color: var(--color-red);
+    font-size: 14px;
+}
+
+/*----------- common styles ------*/
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.justify-content-end {
+    justify-content: end;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.task-title {
+    color: #585656;
+    padding: 0;
+    margin: 0;
+}
+
+.icon {
+    height: 15px;
+    width: 15px;
+    margin-bottom: 3px;
+    cursor: pointer;
+
+    &:active {
+        transform: scale(0.98);
+    }
+
+}
+
+.label {
+    font-size: var(--font-normal);
+    font-weight: 700;
+}
+
+
+.col-title {
+    display: flex;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.pr-1 {
+    padding-right: 1.25rem;
+}
+
+.ml-1 {
+    margin-left: 1rem;
+}
+
+.mr-2 {
+    margin-right: 2rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-half {
+    margin-top: .5rem;
+}
+
+.mt-quarter {
+    margin-top: .25rem;
+}
+
+.mr-quarter {
+    margin-right: .25rem;
+}
+
+.mb-none {
+    margin-bottom: 0;
+}
+
+.bg-white {
+    background: var(--bg-white);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+.red {
+    color: var(--color-red);
+}
+
+.blue {
+    color: var(--color-blue);
+}

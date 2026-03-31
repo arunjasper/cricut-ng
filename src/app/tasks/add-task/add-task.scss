@@ -1,0 +1,27 @@
+
+.edit-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.edit-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+}
+
+.edit-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.edit-body textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    color: var(--color-text);
+    font-family: inherit;
+    resize: none;
+}
