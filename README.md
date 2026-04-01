@@ -24,9 +24,14 @@ TypeScript - Programming language
 NgRx-SignalStore - State Management library
 RxJS - Reactive programming library
 NgRx-Toolkit - State persistence on page refresh (Session Storage/Local Storage)
+Responsive Design
 
 ```
+# Demo
 
+![Todo application desktop demo](./public/demo/desktop.gif)
+
+![Todo application mobile demo](./public/demo/mobile.gif)
 
 # CricutNg
 

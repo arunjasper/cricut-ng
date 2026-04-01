@@ -12,8 +12,6 @@ export class DataService {
     private utilService = inject(UtilityService);
     getTaskList(): Observable<ITask[]> {
         const url = 'api/mock-tasks.json'
-        return this.http.get<ITask[]>(url).pipe(map((tasks: ITask[]) => {
-            return tasks.map(task => ({ id: task.id, title: task.title, completed: task.completed, creationDate: this.utilService.getRandomDate() }));
-        }));
+        return this.http.get<ITask[]>(url)
     }
 }

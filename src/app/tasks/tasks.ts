@@ -107,6 +107,7 @@ export class Tasks {
   onConfirm() {
     this.store.removeTask(this.selectedTask()!)
     this.toggleModal(false);
+    this.selectedTask.set(undefined);
   }
 
   onClose() {
